@@ -3,7 +3,7 @@ const User = require('./User');
 const Post = require('./Post');
 
 // create associations
-User.hasMany(Project, {
+User.hasMany(Post, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
 });
@@ -13,10 +13,9 @@ User.hasMany(Comment, {
 Comment.belongsTo(User, {
   foreignKey: 'user_id'
 });
-Comment.belongsTo(User, {
+Comment.belongsTo(Post, {
   foreignKey: 'post_id'
 });
-
 Post.belongsTo(User, {
   foreignKey: 'user_id'
 });
