@@ -3,6 +3,14 @@ const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
+// get all comments
+router.get('/', async (req, res) => {
+    const coment = await Comment.findAll({
+       attributes: ['id', 'content', 'post_id', 'user_id'],
+       
+     });
+     res.status(200).json(coment);
+   });
 
 router.post('/', withAuth, async (req, res) => {
   try {

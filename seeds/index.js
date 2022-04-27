@@ -1,8 +1,8 @@
-require("dotenv").config();
-const sequelize = require("../config/connection");
 const users = require("./users");
 const posts = require("./posts");
 const comments = require("./comments");
+
+const sequelize = require("../config/connection");
 
 sequelize.sync({ force: true }).then(async () => {
 	await users();
@@ -13,4 +13,6 @@ sequelize.sync({ force: true }).then(async () => {
 
 	await comments();
 	console.log("\n---------DONE SEEDING COMMENTS---------\n");
+
+    process.exit(0);
 });
